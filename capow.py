@@ -3,7 +3,7 @@
 #  NOTES:  #
 # Written using pyqt (4.10.1), matplotlib (2.0.2), numpy (1.12.1), scipy (0.19.0), python (2.7.5)
 # requires window_tab.py (gui) and shelx_weighting.py (code to run weighting minimization)
-# input: .fcf (with .cif and .ins) or .fco (with .cif and .mas)
+# input: .fcf, SHELX LIST 4 or 8, (with .cif and .ins) or .fco, XD2016,(with .cif and .mas)
 
 ##Known issues:
 # "RuntimeWarning: PyOS_InputHook is not available for interactive use of PyGTK" - problem is when importing pyplot from matplotlib. Works using matplotlib (2.0.2).
@@ -911,7 +911,7 @@ class Main(QtGui.QMainWindow, Ui_MainWindow):
     def calculate_weighting_scheme(self):
         """calculates optimal a and b parameters using weighting scheme code from python script"""
         #f_c, f_m, sig_f
-        #check input values are numerical]
+        #check input values are numerical
         all_num=True
         resoln_upper = self.check_int_weight(self.resoln_upper_filt_2.text()) 
         resoln_lower =self.check_int_weight(self.resoln_lower_filt_2.text())
@@ -928,7 +928,7 @@ class Main(QtGui.QMainWindow, Ui_MainWindow):
         elif all_num == False:
             self.tab2_info.setText("Error: One or more of cutoffs is not a number.")
             #pass
-        elif self.code_run == False: #Stop  running if there was an issue importing files
+        elif self.code_run == False: #Stop running if there was an issue importing files
             self.tab2_info.setText("Error: Problem importing files. Weighting code cannot run.")
         else:
             self.tab2_info.setText("")
