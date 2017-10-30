@@ -7,6 +7,8 @@
 #
 # WARNING! All changes made in this file will be lost!
 
+### For use with capow.py - calculation and plotting of optimised weights
+
 from PyQt4 import QtCore, QtGui
 
 try:
