@@ -2,33 +2,41 @@
 Calculating and plotting optimal weights
 
 #Introduction
+
 CAPOW is a graphical user interface to operate two programs; one to produce normal probability plots and another to calculate the optimal a and b parameters for a SHELXL weighting scheme. The SHELXL weighting scheme has six variables which can be defined by the user (a-f). For a refinement on F2:
-(w=  q/(σ_(F^2)^2+(ap)^2+bp+d+e sin⁡θ ))
-where p=f×F_o^2+(1-f)×F_c^2 and q varies depending on the sign of parameter c: q=1.0 when c = 0, q=exp⁡〖(c〗 (sin⁡θ/λ)^2)  when c > 0, and q=〖1 - exp〗⁡〖(c〗 (sin⁡θ/λ)^2)  when c > 0.
+w=  q/(σ_(F^2)^2+(ap)^2+bp+d+e sin⁡θ 
+
+where p=f×F_o^2+(1-f)×F_c^2 and q varies depending on the sign of parameter c: q=1.0 when c = 0, q=exp⁡(c(sin⁡θ/λ)^2)  when c > 0, and q = 1 - exp⁡(c(sin⁡θ/λ)^2)  when c > 0.
 
 Optimal a and b parameters are routinely calculated for data refined in a variety of refinement programs, with the other parameters (c, d, e = 0 and f = 1/3) remaining fixed.
 
 #Requirements
 
-##Python Requirements
 The code has been written using python 2.7.5 and requires, PyQt4 (4.10.1), matplotlib (2.0.2), numpy (1.12.1), scipy (0.19.0) and the provided scripts to create the gui (window_tab.py) and calculate weighting scheme (shelx_weighting.py). The source code has been tested on Scientific Linux 7.0 and Windows 8 and has been written with no operating system requirements.
 
 The program works with either a .fcf (SHELXL LIST 4 or 8) or .fco (XD2016) file and requires two other files to get additional information about the refinement.
+
 Required files:
+
 .fcf - .cif and .ins/.res
+
 .fco - .cif and .mas
+
 .cif file provides the number of independent parameters applied to refinement while the .ins/.mas file gives wavelength, weight applied and unit cell parameters.
 
 #Operating the Program
 
 Starting the program
+
 The program can be run from the command line in Linux by typing the name of your python script ‘python’ followed by the name of the script ‘capow.py’. e.g. ‘python capow.py’.
 This also applies to windows operating system.
 
 Opening a file
+
 To select an .fco/.fcf file, click on the ‘Select File’ option on the toolbar. Click on the Select File option within that list. This will bring up a file dialog which will allow you to select an .fcf or.fco file. The code will then look for a file with the same name cif and ins file (fcf) or \_lsm.cif and .mas file (fco) with the same name as the selected file. If these do not exist, you will be prompted to select one. 
 
 #Editing Normal Probability Plot
+
 After you have selected a file, a normal probability plot will be drawn using the currently applied weighting scheme according to the mas/ins file in the Normal Probability Plot tab. Any cutoffs that were applied to the data will NOT be applied here. 
 You have the option of changing the weighting scheme applied, using the boxes labelled a-f above the plot. Cutoffs to data can be changed by selecting the desired inequality from the dropdown boxes on the right hand side of the plot. I < 1 for example, means display only reflections that have an I of less than one.
 
