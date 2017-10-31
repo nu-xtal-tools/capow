@@ -1,18 +1,22 @@
 # capow
-Calculating and plotting optimal weights
+A GUI calculating optimal values for weighting parameters for a SHELXL weighting scheme for use in crystallographic refinement.
+
+To give feedback/report bugs please contact: N.Johnson5@ncl.ac.uk
 
 ## Introduction
 
-CAPOW is a graphical user interface to operate two programs; one to produce normal probability plots and another to calculate the optimal a and b parameters for a SHELXL weighting scheme. The SHELXL weighting scheme has six variables which can be defined by the user (a-f). For a refinement on F2:
+CAPOW (Calculating And Plotting Optimal Weights) is a graphical user interface to operate two programs; one to produce normal probability plots and another to calculate the optimal a and b parameters for a SHELXL weighting scheme. The SHELXL weighting scheme has six variables which can be defined by the user (a-f). For a refinement on F2:
 w=  q/(σ_(F^2)^2+(ap)^2+bp+d+e sin⁡θ 
 
 where p = f F_o^2+(1-f)F_c^2 and q varies depending on the sign of parameter c: q = 1.0 when c = 0, q = exp⁡(c(sin⁡θ/λ)^2)  when c > 0, and q = 1 - exp⁡(c(sin⁡θ/λ)^2)  when c > 0.
 
 Optimal a and b parameters are routinely calculated for data refined in a variety of refinement programs, with the other parameters (c, d, e = 0 and f = 1/3) remaining fixed.
 
+However, some programs do not have the ability to calculate the optimal a and b parameters, especially when going beyond a spherical atom refinement, which is why CAPOW has been developed.
+
 ## Requirements
 
-The code has been written using python 2.7.5 and requires, PyQt4 (4.10.1), matplotlib (2.0.2), numpy (1.12.1), scipy (0.19.0) and the provided scripts to create the gui (window_tab.py) and calculate weighting scheme (shelx_weighting.py). The source code has been tested on Scientific Linux 7.0 and Windows 8 and has been written with no operating system requirements.
+The code has been written using python 2.7.5 and requires PyQt4 (4.10.1), matplotlib (2.0.2), numpy (1.12.1), scipy (0.19.0) and the provided scripts to create the gui (window_tab.py) and calculate weighting scheme (shelx_weighting.py). The source code has been tested on Scientific Linux 7.0 and Windows 8 and has been written with no operating system requirements.
 
 The program works with either a .fcf (SHELXL LIST 4 or 8) or .fco (XD2016) file and requires two other files to get additional information about the refinement.
 
@@ -46,7 +50,7 @@ To apply the desired changes, click ‘Apply’ button. If there is an error, it
 Information about the normal probability plot, weighting scheme applied, no of reflections in plot, will be visible in this box.
 If a reflection is clicked on, information about that reflection (and others closeby) is displayed in this box. The reflection indicies (h,k,l) alongside structure factors, standard uncertainties and position of the reflection on the graph. If more than 25 reflections are close by, nothing will be printed. To investigate densely populated areas of reflections, use the magnifying glass button to zoom into the area on the graph and try again.
 
-### Calculating optimal a and b parameters
+### Calculating optimal a and b parameters for weighting scheme
 
 #### Operation of script
 
