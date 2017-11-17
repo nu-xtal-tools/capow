@@ -625,8 +625,8 @@ class Main(QtGui.QMainWindow, Ui_MainWindow):
                 if self.F_m[i] > -9999999999.0: #0.0: # as square rooting a number less than 0 would make np.sqrt freak out - think this line should be changed to the 0.0!!!!!!!!!!
                     resoln_i = float(self.resoln[i]) #resolution being sintheta/lamda
                     ### filtering reflections based on limits ###
-                    utrue =  resoln_i >= resoln_lower_filt #is the resolution number above the lower filt
-                    ltrue =  resoln_upper_filt >= resoln_i # is resolution number below the upper filt
+                    utrue =  resoln_i >= float(resoln_lower_filt) #is the resolution number above the lower filt
+                    ltrue =  float(resoln_upper_filt) >= resoln_i # is resolution number below the upper filt
                     # lower filt < resolution < upper filt == good! :D
                     if utrue == True:
                         if ltrue == True:
